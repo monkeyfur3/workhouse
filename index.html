@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>骰子工坊 | Dice Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div class="brand-mark" aria-hidden="true">✦</div>
+      <div>
+        <p class="eyebrow">DICE STUDIO / 01</p>
+        <h1>骰子工坊</h1>
+        <p class="intro">把一點隨機，變成下一個精彩決定。</p>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="骰子擲骰工具">
+      <div class="control-panel">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <p class="eyebrow">CONFIGURE</p>
+            <h2>設定你的骰子</h2>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="dice-count">骰子數量</label>
+          <div class="stepper">
+            <button class="stepper-button" type="button" data-step="-1" aria-label="減少骰子數量">−</button>
+            <output id="dice-count-value" for="dice-count">2</output>
+            <button class="stepper-button" type="button" data-step="1" aria-label="增加骰子數量">＋</button>
+          </div>
+          <input id="dice-count" type="range" min="1" max="8" value="2" aria-label="骰子數量">
+        </div>
+
+        <div class="field-group">
+          <span class="field-label">骰子面數</span>
+          <div class="dice-options" role="group" aria-label="選擇骰子面數">
+            <button class="dice-option" type="button" data-sides="4">D4</button>
+            <button class="dice-option" type="button" data-sides="6">D6</button>
+            <button class="dice-option is-selected" type="button" data-sides="8">D8</button>
+            <button class="dice-option" type="button" data-sides="10">D10</button>
+            <button class="dice-option" type="button" data-sides="20">D20</button>
+          </div>
+        </div>
+
+        <button id="roll-button" class="roll-button" type="button">
+          <span>擲骰子</span>
+          <span class="roll-arrow" aria-hidden="true">↗</span>
+        </button>
+      </div>
+
+      <div class="result-panel">
+        <div class="result-topline">
+          <div class="section-heading">
+            <span class="section-number">02</span>
+            <div>
+              <p class="eyebrow">YOUR RESULT</p>
+              <h2>本次結果</h2>
+            </div>
+          </div>
+          <span id="roll-meta" class="roll-meta">2 顆 D8</span>
+        </div>
+
+        <div id="dice-stage" class="dice-stage" aria-live="polite" aria-label="骰子結果"></div>
+
+        <div class="total-display">
+          <span class="total-label">總和</span>
+          <strong id="total-value">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="history-heading">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <p class="eyebrow">ROLL LOG</p>
+            <h2>最近紀錄</h2>
+          </div>
+        </div>
+        <button id="clear-history" class="text-button" type="button">清除紀錄</button>
+      </div>
+      <ol id="history-list" class="history-list" aria-label="最近擲骰紀錄"></ol>
+    </section>
+
+    <footer>
+      <span>每一次結果，都是新的可能。</span>
+      <span class="footer-code">RANDOMNESS / 2026</span>
+    </footer>
+  </main>
+</body>
+</html>

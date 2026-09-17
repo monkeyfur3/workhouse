@@ -1,0 +1,124 @@
+:root {
+  --ink: #18211f;
+  --muted: #71807b;
+  --paper: #f5f7f1;
+  --panel: #ffffff;
+  --line: #dce4dc;
+  --accent: #e75b3c;
+  --accent-dark: #c7462b;
+  --lime: #d9ef82;
+  --shadow: 0 24px 60px rgba(35, 52, 43, 0.09);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: radial-gradient(#bac9bf 0.7px, transparent 0.7px);
+  background-size: 17px 17px;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 58px 0 34px;
+}
+
+.hero { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 46px; }
+.brand-mark {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  background: var(--accent);
+  color: #fff8ef;
+  font-size: 28px;
+  transform: rotate(-8deg);
+}
+
+a, button { -webkit-tap-highlight-color: transparent; }
+.eyebrow { margin: 0 0 5px; color: var(--accent); font: 700 11px "Space Grotesk", sans-serif; letter-spacing: 0.16em; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 8px; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.06em; }
+h2 { margin-bottom: 0; font-size: 1.16rem; font-weight: 900; letter-spacing: -0.03em; }
+.intro { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+.workspace { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 20px; }
+.control-panel, .result-panel, .history-section { border: 1px solid var(--line); background: rgba(255, 255, 255, 0.86); box-shadow: var(--shadow); }
+.control-panel, .result-panel { min-height: 440px; padding: 32px; }
+.control-panel { border-radius: 4px 4px 4px 28px; }
+.result-panel { border-radius: 4px 28px 4px 4px; background: var(--ink); color: #fff; }
+.section-heading { display: flex; align-items: center; gap: 14px; }
+.section-number { color: var(--accent); font: 700 13px "Space Grotesk", sans-serif; }
+.result-panel .eyebrow { color: var(--lime); }
+
+.field-group { margin-top: 42px; }
+.field-group label, .field-label { display: block; margin-bottom: 14px; color: var(--muted); font-size: 0.84rem; font-weight: 700; }
+.stepper { display: flex; width: 150px; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ink); }
+.stepper output { font: 700 2.2rem "Space Grotesk", sans-serif; }
+.stepper-button { width: 32px; height: 40px; border: 0; background: transparent; color: var(--accent); font-size: 1.6rem; }
+.stepper-button:hover { color: var(--accent-dark); }
+input[type="range"] { width: 100%; margin-top: 18px; accent-color: var(--accent); }
+.dice-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.dice-option { width: 52px; height: 42px; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--muted); font: 700 0.8rem "Space Grotesk", sans-serif; transition: 0.2s ease; }
+.dice-option:hover, .dice-option.is-selected { border-color: var(--ink); background: var(--ink); color: white; }
+.roll-button { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-top: 47px; padding: 16px 18px; border: 0; border-radius: 3px; background: var(--accent); color: #fff; font-weight: 900; transition: transform 0.2s ease, background 0.2s ease; }
+.roll-button:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.roll-arrow { font-size: 1.25rem; }
+
+.result-topline { display: flex; align-items: flex-start; justify-content: space-between; }
+.roll-meta { color: #aab9b0; font: 500 0.74rem "Space Grotesk", sans-serif; }
+.dice-stage { display: flex; min-height: 210px; align-items: center; justify-content: center; gap: 14px; padding: 24px 0; flex-wrap: wrap; }
+.die { display: grid; width: 76px; aspect-ratio: 1; place-items: center; border: 2px solid #fff; border-radius: 15px; background: var(--lime); color: var(--ink); font: 700 2rem "Space Grotesk", sans-serif; box-shadow: 7px 7px 0 rgba(217, 239, 130, 0.24); animation: enter 0.45s both cubic-bezier(.17,.67,.33,1.18); }
+.die:nth-child(2) { animation-delay: 0.06s; }
+.die:nth-child(3) { animation-delay: 0.12s; }
+.die:nth-child(4) { animation-delay: 0.18s; }
+.die:nth-child(5) { animation-delay: 0.24s; }
+.die:nth-child(6) { animation-delay: 0.30s; }
+.total-display { display: flex; align-items: baseline; justify-content: space-between; border-top: 1px solid rgba(255, 255, 255, 0.18); padding-top: 19px; }
+.total-label { color: #aab9b0; font-size: 0.8rem; font-weight: 700; }
+.total-display strong { color: var(--lime); font: 700 3.8rem/1 "Space Grotesk", sans-serif; }
+
+.history-section { margin-top: 20px; padding: 26px 32px 18px; border-radius: 4px; box-shadow: none; }
+.history-heading { display: flex; align-items: center; justify-content: space-between; }
+.text-button { border: 0; background: transparent; color: var(--muted); font-size: 0.78rem; }
+.text-button:hover { color: var(--accent); }
+.history-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 23px 0 0; padding: 0; list-style: none; }
+.history-item { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding: 13px 2px 3px; color: var(--muted); font-size: 0.78rem; }
+.history-item strong { color: var(--ink); font: 700 1.3rem "Space Grotesk", sans-serif; }
+.empty-history { grid-column: 1 / -1; padding: 12px 0 2px; color: var(--muted); font-size: 0.8rem; }
+footer { display: flex; justify-content: space-between; margin-top: 35px; color: var(--muted); font-size: 0.7rem; }
+.footer-code { font: 500 0.65rem "Space Grotesk", sans-serif; letter-spacing: 0.12em; }
+
+@keyframes enter { from { opacity: 0; transform: translateY(18px) rotate(-8deg); } to { opacity: 1; transform: translateY(0) rotate(0); } }
+
+@media (max-width: 760px) {
+  .app-shell { width: min(100% - 30px, 560px); padding-top: 34px; }
+  .hero { margin-bottom: 30px; }
+  .workspace { grid-template-columns: 1fr; }
+  .control-panel, .result-panel { min-height: auto; padding: 25px; }
+  .control-panel { border-radius: 4px 20px 4px 4px; }
+  .result-panel { border-radius: 4px 4px 4px 20px; }
+  .field-group { margin-top: 30px; }
+  .roll-button { margin-top: 35px; }
+  .history-list { grid-template-columns: 1fr; }
+  footer { gap: 12px; flex-direction: column; }
+}
