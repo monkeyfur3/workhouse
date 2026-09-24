@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #eff2e7;
+  --muted: #9baaa2;
+  --deep: #172326;
+  --panel: #243337;
+  --line: rgba(215, 230, 213, 0.16);
+  --lime: #d5e56d;
+  --coral: #f17a62;
+  --sand: #e9cf9a;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #10191b;
+  font-family: 'Space Grotesk', sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .32;
+  background-image: linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+button { font: inherit; }
+.game-shell { width: min(1120px, 100%); position: relative; }
+.topbar, .bottom-bar { display: flex; align-items: center; justify-content: space-between; }
+.topbar { padding: 0 5px 22px; }
+.brand-lockup { display: flex; align-items: center; gap: 13px; }
+.brand-mark { width: 30px; height: 30px; display: block; position: relative; border: 2px solid var(--lime); transform: rotate(45deg); }
+.brand-mark::after { content: ''; position: absolute; inset: 6px; background: var(--coral); }
+.eyebrow, .panel-kicker, .hud-line, .scoreboard span, .control-note, .bottom-bar { font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .11em; }
+.eyebrow { color: var(--lime); font-size: 10px; margin: 0 0 3px; }
+h1 { font-size: 25px; line-height: 1; margin: 0; letter-spacing: -.04em; }
+.scoreboard { display: flex; gap: 30px; text-align: right; }
+.scoreboard div { display: grid; gap: 4px; }
+.scoreboard span { color: var(--muted); font-size: 9px; }
+.scoreboard strong { color: var(--lime); font: 500 20px 'DM Mono', monospace; letter-spacing: .08em; }
+.game-frame { height: min(62vh, 560px); min-height: 390px; position: relative; overflow: hidden; border: 1px solid var(--line); background: #30474a; box-shadow: 0 24px 80px rgba(0,0,0,.28); }
+canvas { width: 100%; height: 100%; display: block; }
+.hud-line { position: absolute; left: 24px; right: 24px; top: 19px; display: flex; justify-content: space-between; color: rgba(239,242,231,.7); font-size: 10px; pointer-events: none; }
+.start-panel { position: absolute; left: 8%; top: 50%; width: min(410px, 84%); transform: translateY(-42%); transition: opacity .3s, transform .3s; }
+.start-panel.is-hidden { opacity: 0; pointer-events: none; transform: translateY(-35%); }
+.panel-kicker { color: var(--coral); font-size: 10px; }
+h2 { max-width: 390px; font-size: clamp(32px, 5vw, 61px); line-height: .94; letter-spacing: -.065em; margin: 13px 0 16px; }
+.start-panel p:not(.control-note) { color: #c1cdc1; max-width: 290px; line-height: 1.65; margin: 0 0 25px; font-size: 14px; }
+#startButton { cursor: pointer; display: flex; align-items: center; justify-content: space-between; width: 190px; border: 0; padding: 14px 16px; color: var(--deep); background: var(--lime); font-weight: 700; transition: transform .2s, background .2s; }
+#startButton:hover { transform: translateX(5px); background: #e4f47e; }
+#startButton b { font-size: 20px; line-height: 12px; }
+.control-note { color: rgba(239,242,231,.58); font-size: 9px; margin-top: 29px; }
+kbd { color: var(--ink); border-bottom: 1px solid var(--lime); padding: 0 2px 2px; }
+.bottom-bar { color: var(--muted); padding: 16px 5px 0; gap: 18px; font-size: 9px; }
+.bottom-bar > span { display: flex; align-items: center; gap: 8px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.dot-coral { background: var(--coral); } .dot-lime { background: var(--lime); }
+.sound-button { margin-left: auto; border: 0; color: var(--muted); background: transparent; cursor: pointer; font: inherit; font-size: 9px; letter-spacing: .11em; }
+.sound-button:hover { color: var(--ink); }
+@media (max-width: 620px) {
+  body { padding: 16px; }
+  .topbar { align-items: flex-end; padding-bottom: 15px; }
+  .scoreboard { gap: 14px; } .scoreboard strong { font-size: 15px; }
+  .game-frame { min-height: 440px; height: 68vh; }
+  .bottom-bar { flex-wrap: wrap; gap: 10px 16px; } .sound-button { margin-left: 0; }
+  .start-panel { left: 9%; }
+}

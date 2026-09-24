@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#172326">
+  <title>荒原疾行 | Canvas Runner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <p class="eyebrow">WILDLIGHT / RUN 01</p>
+          <h1>荒原疾行</h1>
+        </div>
+      </div>
+      <div class="scoreboard" aria-label="遊戲分數">
+        <div><span>距離</span><strong id="score">00000</strong></div>
+        <div><span>最高紀錄</span><strong id="best">00000</strong></div>
+      </div>
+    </header>
+
+    <section class="game-frame" aria-label="荒原疾行遊戲區域">
+      <canvas id="gameCanvas" aria-label="2D 橫向跑酷遊戲畫面"></canvas>
+      <div class="hud-line"><span id="statusText">準備出發</span><span id="speedText">速度 1.0x</span></div>
+      <div class="start-panel" id="startPanel">
+        <span class="panel-kicker">THE LONG LIGHT</span>
+        <h2 id="panelTitle">穿過風蝕地平線</h2>
+        <p id="panelCopy">跳過荊棘、收集光點，讓旅程走得更遠。</p>
+        <button id="startButton" type="button"><span>開始奔跑</span><b aria-hidden="true">→</b></button>
+        <p class="control-note">按 <kbd>Space</kbd> 或 <kbd>↑</kbd> 跳躍 · <kbd>P</kbd> 暫停</p>
+      </div>
+    </section>
+
+    <footer class="bottom-bar">
+      <span><i class="dot dot-coral"></i>躲避風蝕荊棘</span>
+      <span><i class="dot dot-lime"></i>收集微光碎片</span>
+      <button class="sound-button" id="soundButton" type="button" aria-label="切換音效" aria-pressed="true">音效 ON</button>
+    </footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
